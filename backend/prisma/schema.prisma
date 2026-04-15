@@ -1,0 +1,73 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String   @id
+  username      String   @unique
+  email         String?  @unique
+  password      String
+  name          String
+  role          String   @default("RESIDENT")
+  purok         String?
+  contactNumber String?
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime
+
+  announcements Announcement[] @relation("UserAnnouncements")
+  notifications Notification[]
+
+  @@map("users")
+}
+
+model Announcement {
+  id              String    @id
+  title           String
+  message         String
+  category        String
+  status          String    @default("PENDING")
+  deliveryMethod  String    @default("WEB")
+  scheduledDate   DateTime?
+  publishedDate   DateTime?
+  isEmergency     Boolean   @default(false)
+  targetAudience  String    @default("")
+  recipientsCount Int       @default(0)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime
+
+  authorId String
+  author   User   @relation("UserAnnouncements", fields: [authorId], references: [id], onDelete: Cascade)
+
+  notifications Notification[]
+
+  @@index([authorId])
+  @@map("announcements")
+}
+
+model Notification {
+  id             String    @id
+  type           String    @default("ANNOUNCEMENT")
+  title          String
+  message        String
+  category       String
+  isRead         Boolean   @default(false)
+  targetAudience String    @default("")
+  createdAt      DateTime  @default(now())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  announcementId String?
+  announcement   Announcement? @relation(fields: [announcementId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([announcementId])
+  @@map("notifications")
+}
+
