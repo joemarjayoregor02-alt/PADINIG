@@ -1,9 +1,7 @@
 import React, {
-  useCallback,
   useEffect,
   useState,
-  useRef,
-  Component } from
+  useRef } from
 'react';
 import { Link } from 'react-router-dom';
 import {

@@ -1,4 +1,3 @@
-import React from 'react';
 interface BadgeProps {
   type: 'category' | 'status' | 'tag';
   value: string;

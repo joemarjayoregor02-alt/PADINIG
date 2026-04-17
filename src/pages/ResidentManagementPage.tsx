@@ -1,8 +1,6 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   Search,
-  Plus,
-  Filter,
   Trash2,
   UserPlus,
   AlertTriangle,
@@ -10,8 +8,7 @@ import {
   Phone,
   User,
   MapPin,
-  Smartphone,
-  Info } from
+  Smartphone } from
 'lucide-react';
 import { AdminLayout } from '../components/AdminLayout';
 import { puroks } from '../data/mockData';
@@ -31,7 +28,7 @@ type ResidentRow = {
 export function ResidentManagementPage() {
   const [activeTab, setActiveTab] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
+  const [, setIsLoading] = useState(true);
   const [residents, setResidents] = useState<ResidentRow[]>([]);
   const [deleteTarget, setDeleteTarget] = useState<ResidentRow | null>(null);
   const [addModalOpen, setAddModalOpen] = useState(false);

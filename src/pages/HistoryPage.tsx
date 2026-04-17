@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Search,
   Filter,
@@ -16,7 +16,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'sonner';
 export function HistoryPage() {
   const [announcements, setAnnouncements] = useState<UiAnnouncement[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [filterOpen, setFilterOpen] = useState(false);
   const [categoryFilter, setCategoryFilter] = useState<string | 'All'>('All');

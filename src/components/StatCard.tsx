@@ -1,10 +1,9 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { BoxIcon } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 interface StatCardProps {
   title: string;
   value: string | number;
-  icon: BoxIcon;
+  icon: LucideIcon;
   trend?: {
     value: string;
     isPositive: boolean;

@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Calendar as CalendarIcon,
   List,
-  Filter,
   MoreVertical,
   Search,
   X } from
@@ -16,7 +15,7 @@ import { toUiAnnouncement } from '../lib/announcements';
 export function SchedulePage() {
   const [view, setView] = useState<'list' | 'calendar'>('list');
   const [searchQuery, setSearchQuery] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
+  const [, setIsLoading] = useState(true);
   const [allScheduled, setAllScheduled] = useState<UiAnnouncement[]>([]);
 
   useEffect(() => {

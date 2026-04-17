@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import type { LucideIcon } from 'lucide-react';
 import {
   Calendar,
   Users,
   Radio,
   ArrowRight,
   X,
-  Send } from
+  Send,
+  Smartphone,
+  Monitor,
+  Layers } from
 'lucide-react';
 import { getRelativeTime } from '../data/mockData';
 import { Badge } from './Badge';
@@ -60,6 +64,12 @@ export function AnnouncementCard({
   announcement.deliveryMethod === 'SMS' ?
   'SMS Only' :
   'Web Platform Only';
+  const DeliveryIcon: LucideIcon =
+  announcement.deliveryMethod === 'Both' ?
+  Layers :
+  announcement.deliveryMethod === 'SMS' ?
+  Smartphone :
+  Monitor;
   return (
     <>
       <motion.div
@@ -260,7 +270,7 @@ export function AnnouncementCard({
                 }
 
                   <div className="flex items-start gap-3 p-3 sm:p-4 bg-slate-50 dark:bg-slate-900/30 rounded-xl border border-slate-100 dark:border-slate-700">
-                    <deliveryIcon
+                    <DeliveryIcon
                     size={18}
                     className="text-accent-dark mt-0.5 shrink-0" />
                   

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Shield, Lock } from 'lucide-react';
 import { AdminLayout } from '../components/AdminLayout';
 
